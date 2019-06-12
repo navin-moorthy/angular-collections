@@ -12,7 +12,7 @@ New Angular Project - `ng new <my-dream-app>`
 
 Start the Developement Server of that Project - `ng serve`
 
-To update the port and hostname of the default Angular Live Developement Server
+To update port and hostname of the default Angular Live Developement Server
 
 ```json
 "serve": {
