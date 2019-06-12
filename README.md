@@ -16,10 +16,11 @@ To update the port and hostname of the default Angular Live Developement Server
 
 ```json
 "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "Assignment1ProductList:build",
-            "host": "0.0.0.0",
-            "port": 8080
-          }
+  "builder": "@angular-devkit/build-angular:dev-server",
+  "options": {
+    "browserTarget": "Assignment1ProductList:build",
+    "host": "0.0.0.0",
+    "port": 8080
+  }
+}
 ```
