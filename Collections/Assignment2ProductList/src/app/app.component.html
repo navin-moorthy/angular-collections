@@ -1,3 +1,13 @@
-<h1>Demonstration of Built-in directives and data binding</h1>
+<h1>Demonstration of passing date between components and style demo</h1>
 
-<app-products></app-products>
+<h2 *ngIf="newlyAddedProduct.name && newlyAddedProduct.quantity">
+  Recently Added Product: {{ newlyAddedProduct.name }},
+  {{ newlyAddedProduct.quantity }}
+</h2>
+
+<hr />
+
+<app-products
+  [company]="productCompany"
+  (newProduct)="onNewProduct($event)"
+></app-products>

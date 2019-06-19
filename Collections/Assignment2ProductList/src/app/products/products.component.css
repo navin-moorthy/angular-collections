@@ -1,12 +1,14 @@
 h2 {
   font-size: 28px;
   margin-top: 0;
+  color: royalblue;
 }
 
 table {
   margin: 20px;
   margin-top: 0;
   border-collapse: collapse;
+  color: teal;
 }
 
 th,
@@ -26,7 +28,7 @@ td {
   display: block;
   margin: 10px;
   text-align: center;
-  color: #000;
+  color: crimson;
   font-weight: 700;
   transition: all 0.2s ease-in-out;
   font-size: 18px;

@@ -7,4 +7,11 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
   productCompany: any = "Amazon";
+
+  newlyAddedProduct: any = {};
+
+  onNewProduct({ name, quantity }) {
+    this.newlyAddedProduct.name = name;
+    this.newlyAddedProduct.quantity = quantity;
+  }
 }

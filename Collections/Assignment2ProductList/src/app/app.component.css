@@ -1,5 +1,18 @@
-h1 {
+h1,
+h2 {
   text-align: center;
+}
+
+h1 {
+  color: mediumseagreen;
+}
+
+h2 {
+  color: chocolate;
+}
+
+hr {
+  color: rebeccapurple;
 }
 
 app-products {
