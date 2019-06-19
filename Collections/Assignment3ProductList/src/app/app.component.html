@@ -1,0 +1,13 @@
+<h1>Demonstration of passing date between components and style demo</h1>
+
+<h2 *ngIf="newlyAddedProduct.name && newlyAddedProduct.quantity">
+  Recently Added Product: {{ newlyAddedProduct.name }},
+  {{ newlyAddedProduct.quantity }}
+</h2>
+
+<hr />
+
+<app-products
+  [company]="productCompany"
+  (newProduct)="onNewProduct($event)"
+></app-products>

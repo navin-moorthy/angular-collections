@@ -1,0 +1,39 @@
+<h2>Product List - {{ company }}</h2>
+
+<table>
+  <tr>
+    <th>Product Name</th>
+    <th>Quantity</th>
+  </tr>
+  <tr *ngFor="let product of products">
+    <td>{{ product.name }}</td>
+    <td>{{ product.quantity }}</td>
+  </tr>
+</table>
+
+<form
+  #getProductDetailsForm="ngForm"
+  (ngSubmit)="onSubmit(getProductDetailsForm)"
+>
+  <div class="form-group">
+    <label for="productName">Enter the Product Name</label>
+    <input
+      type="text"
+      name="name"
+      id="productName"
+      ngModel
+      autocomplete="off"
+    />
+  </div>
+  <div class="form-group">
+    <label for="productQuantity">Enter Quantity</label>
+    <input
+      type="number"
+      name="quantity"
+      id="productQuantity"
+      ngModel
+      autocomplete="off"
+    />
+  </div>
+  <button type="submit">Submit</button>
+</form>
