@@ -1,0 +1,24 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Moto G5",
+      "quantity": 2
+    },
+    {
+      "id": 2,
+      "name": "Racold Geyser",
+      "quantity": 3
+    },
+    {
+      "name": "Dell Inspiron",
+      "quantity": 4,
+      "id": 3
+    },
+    {
+      "name": "HP Pavilion",
+      "quantity": 1,
+      "id": 4
+    }
+  ]
+}
