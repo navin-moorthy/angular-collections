@@ -1,0 +1,59 @@
+<div class="container" [class.mat-elevation-z8]="true">
+  <mat-toolbar>
+    <button mat-button color="primary">
+      <mat-icon>search</mat-icon>
+    </button>
+    <span>All Issues</span>
+    <button mat-button color="primary" (click)="openDialog()">
+      New
+      <mat-icon>add</mat-icon>
+    </button>
+  </mat-toolbar>
+  <div class="issueContainer">
+    <mat-accordion>
+      <!-- Issue Panel Heading -->
+      <mat-expansion-panel hideToggle disabled>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <strong style="color: #ff4081">Issue ID</strong>
+          </mat-panel-title>
+          <mat-panel-description class="panelDescription">
+            <strong style="color: #ff4081">Short Description</strong>
+          </mat-panel-description>
+          <strong style="color: #ff4081">Issue Status</strong>
+        </mat-expansion-panel-header>
+      </mat-expansion-panel>
+
+      <!-- List of Issue -->
+      <mat-expansion-panel *ngFor="let issue of issues" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>{{ issue.id }} </mat-panel-title>
+          <mat-panel-description>
+            {{ issue.shortDescription }}
+          </mat-panel-description>
+          <span>{{ issue.status }} </span>
+        </mat-expansion-panel-header>
+        <div class="row">
+          <div class="column">
+            <div>
+              <h4>Date Created</h4>
+              <span>{{ issue.dateCreated }}</span>
+            </div>
+            <div class="grow"></div>
+            <div>
+              <h4>Severity</h4>
+              <span>{{ issue.severity }}</span>
+            </div>
+          </div>
+          <h4>Details</h4>
+          <span>{{ issue.details }}</span>
+        </div>
+        <mat-action-row>
+          <button mat-stroked-button color="accent">UPDATE</button>
+          <div class="grow"></div>
+          <button mat-stroked-button color="warn">DELETE</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>
