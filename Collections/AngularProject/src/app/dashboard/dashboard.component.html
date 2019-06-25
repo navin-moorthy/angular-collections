@@ -4,7 +4,7 @@
       <mat-icon>search</mat-icon>
     </button>
     <span>All Issues</span>
-    <button mat-button color="primary" (click)="openDialog()">
+    <button mat-button color="primary" (click)="openDialog($event)">
       New
       <mat-icon>add</mat-icon>
     </button>
@@ -31,27 +31,40 @@
           <mat-panel-description>
             {{ issue.shortDescription }}
           </mat-panel-description>
-          <span>{{ issue.status }} </span>
+          <span>{{ issue.status | uppercase }} </span>
         </mat-expansion-panel-header>
         <div class="row">
           <div class="column">
             <div>
               <h4>Date Created</h4>
-              <span>{{ issue.dateCreated }}</span>
+              <span>{{ issue.dateCreated | date: "longDate" }}</span>
             </div>
             <div class="grow"></div>
             <div>
               <h4>Severity</h4>
-              <span>{{ issue.severity }}</span>
+              <span>{{ issue.severity | uppercase }}</span>
             </div>
           </div>
           <h4>Details</h4>
           <span>{{ issue.details }}</span>
+          <div>
+            <h4 *ngIf="issue.status !== 'close'">Resolution Date</h4>
+            <h4 *ngIf="issue.status === 'close'">Resolved Date</h4>
+            <span>{{ issue.resolutionDate | date: "longDate" }}</span>
+          </div>
         </div>
         <mat-action-row>
-          <button mat-stroked-button color="accent">UPDATE</button>
+          <button
+            mat-stroked-button
+            color="accent"
+            (click)="openDialog($event)"
+          >
+            UPDATE
+          </button>
           <div class="grow"></div>
-          <button mat-stroked-button color="warn">DELETE</button>
+          <button mat-stroked-button color="warn" (click)="openDialog($event)">
+            DELETE
+          </button>
         </mat-action-row>
       </mat-expansion-panel>
     </mat-accordion>

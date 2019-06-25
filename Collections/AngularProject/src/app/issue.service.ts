@@ -10,4 +10,16 @@ export class IssueService {
   getIssues() {
     return this.http.get<any>(this.url);
   }
+
+  addIssue(issue) {
+    return this.http.post<any>(this.url, issue);
+  }
+
+  updateIssue(issue) {
+    return this.http.put<any>(this.url + "/" + issue.id, issue);
+  }
+
+  deleteIssue(id) {
+    return this.http.delete<any>(this.url + "/" + id);
+  }
 }

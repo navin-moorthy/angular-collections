@@ -1,6 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { IssueService } from "../issue.service";
-import { MatDialog, MatDialogRef } from "@angular/material";
+import { MatDialog } from "@angular/material";
+
+import { AddIssueComponent } from "./add-issue/add-issues.component";
+import { UpdateIssueComponent } from "./update-issue/update-issue.component";
 
 @Component({
   selector: "app-dashboard",
@@ -9,13 +12,6 @@ import { MatDialog, MatDialogRef } from "@angular/material";
 })
 export class DashboardComponent implements OnInit {
   constructor(private issueService: IssueService, private dialog: MatDialog) {}
-
-  issueId: number = null;
-  dateCreated: number = null;
-  shortDescription: string = null;
-  details: string = null;
-  severity: string = null;
-  status: string = null;
 
   issues: any = [];
 
@@ -30,25 +26,105 @@ export class DashboardComponent implements OnInit {
     );
   }
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      width: "400px"
-    });
+  openDialog(method) {
+    // Add new issue
+    if (
+      method.target.textContent !== " DELETE " &&
+      method.target.textContent !== " UPDATE "
+    ) {
+      const addIssueDialog = this.dialog.open(AddIssueComponent, {
+        width: "100vh"
+      });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log("The dialog was closed");
-    });
-  }
-}
+      addIssueDialog.afterClosed().subscribe(result => {
+        console.log(result || "Closed without submitting the issue");
+        if (result) {
+          this.issues = [];
+          this.issueService.getIssues().subscribe(
+            issues => {
+              issues.forEach(issue => {
+                this.issues.push(issue);
+              });
+            },
+            err => console.log(err)
+          );
+        }
+      });
+    }
 
-@Component({
-  selector: "dialog-overview-example-dialog",
-  templateUrl: "dialog-overview-example-dialog.html"
-})
-export class DialogOverviewExampleDialog {
-  constructor(public dialogRef: MatDialogRef<DialogOverviewExampleDialog>) {}
+    // Update an issue
+    if (method.target.textContent === " UPDATE ") {
+      let issueIdUpdate: number;
 
-  onNoClick(): void {
-    this.dialogRef.close();
+      if (method.target.className === "mat-button-wrapper") {
+        issueIdUpdate = parseInt(
+          method.target.parentNode.parentNode.parentNode.parentNode.firstChild
+            .firstChild.firstChild.firstChild.textContent,
+          10
+        );
+      } else {
+        issueIdUpdate = parseInt(
+          method.target.parentNode.parentNode.parentNode.firstChild.firstChild
+            .firstChild.firstChild.textContent,
+          10
+        );
+      }
+
+      this.issues.forEach(issue => {
+        if (issue.id === issueIdUpdate) {
+          const updateIssueDialog = this.dialog.open(UpdateIssueComponent, {
+            data: { issue },
+            width: "100vh"
+          });
+
+          updateIssueDialog.afterClosed().subscribe(result => {
+            console.log(result || "Closed without submitting the issue");
+            this.issues = [];
+            this.issueService.getIssues().subscribe(
+              issues => {
+                issues.forEach(issue => {
+                  this.issues.push(issue);
+                });
+              },
+              err => console.log(err)
+            );
+          });
+        }
+      });
+    }
+
+    // Delete an issue
+    if (method.target.textContent === " DELETE ") {
+      let issueIdDelete: number;
+
+      if (method.target.className === "mat-button-wrapper") {
+        issueIdDelete = parseInt(
+          method.target.parentNode.parentNode.parentNode.parentNode.firstChild
+            .firstChild.firstChild.firstChild.textContent,
+          10
+        );
+      } else {
+        issueIdDelete = parseInt(
+          method.target.parentNode.parentNode.parentNode.firstChild.firstChild
+            .firstChild.firstChild.textContent,
+          10
+        );
+      }
+
+      this.issueService.deleteIssue(issueIdDelete).subscribe(
+        data => {
+          this.issues = [];
+          this.issueService.getIssues().subscribe(
+            issues => {
+              issues.forEach(issue => {
+                this.issues.push(issue);
+              });
+            },
+            err => console.log(err)
+          );
+        },
+        error => console.log(error)
+      );
+    }
   }
 }
