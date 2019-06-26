@@ -97,6 +97,12 @@ export class DashboardComponent implements OnInit {
           .firstChild.firstChild.firstChild.textContent,
         10
       );
+    } else if (event.target.classList[0] === "mat-icon") {
+      issueIdToBeUpdated = parseInt(
+        event.target.parentNode.parentNode.parentNode.parentNode.parentNode
+          .childNodes[1].firstChild.firstChild.firstChild.textContent,
+        10
+      );
     } else {
       issueIdToBeUpdated = parseInt(
         event.target.parentNode.parentNode.parentNode.childNodes[1].firstChild
@@ -151,6 +157,13 @@ export class DashboardComponent implements OnInit {
       issueIdToBeDeleted = parseInt(
         event.target.parentNode.parentNode.parentNode.parentNode.childNodes[1]
           .firstChild.firstChild.firstChild.textContent,
+        10
+      );
+    } else if (event.target.classList[0] === "mat-icon") {
+      console.log(event);
+      issueIdToBeDeleted = parseInt(
+        event.target.parentNode.parentNode.parentNode.parentNode.parentNode
+          .childNodes[1].firstChild.firstChild.firstChild.textContent,
         10
       );
     } else {
