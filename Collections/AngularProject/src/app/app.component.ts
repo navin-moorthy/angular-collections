@@ -13,6 +13,9 @@ export class AppComponent implements OnInit {
   showWelcome: boolean;
 
   ngOnInit() {
+    /**
+     * To display welcome only on home url
+     */
     this.router.events.subscribe(value => {
       if (value instanceof NavigationStart) {
         if (value.url === "/") {

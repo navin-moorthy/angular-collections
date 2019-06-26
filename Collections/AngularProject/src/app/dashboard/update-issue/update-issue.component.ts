@@ -1,6 +1,5 @@
 import { Component, OnInit, Inject } from "@angular/core";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
-import { FormControl } from "@angular/forms";
 import { IssueService } from "src/app/issue.service";
 
 @Component({
@@ -16,6 +15,7 @@ export class UpdateIssueComponent implements OnInit {
   ) {}
 
   issue: any;
+
   ngOnInit() {
     this.issue = this.data.issue;
   }

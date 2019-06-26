@@ -1,3 +1,4 @@
+<!-- NavBar -->
 <mat-toolbar color="primary" class="navbar" [class.mat-elevation-z8]="true">
   <button mat-button>
     <span class="mat-title"
@@ -9,8 +10,10 @@
   </button>
 </mat-toolbar>
 
+<!-- Angular Router -->
 <router-outlet></router-outlet>
 
+<!-- Welcome Display -->
 <div *ngIf="showWelcome" class="container">
   <h1>Welcome to simple Issue Tracker starter</h1>
   <h2>Want to manage your issues effectively?</h2>

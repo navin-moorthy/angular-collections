@@ -2,7 +2,7 @@
   "issues": [
     {
       "id": 1561493082998,
-      "status": "inprogess",
+      "status": "inprogress",
       "dateCreated": "2019-06-25T20:04:42.998Z",
       "severity": "low",
       "shortDescription": "UI Slowness",
@@ -17,6 +17,15 @@
       "shortDescription": "Authentication Issue",
       "resolutionDate": "2019-06-26T18:30:00.000Z",
       "details": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tempor hendrerit quam non imperdiet. Nullam a interdum mi. Vivamus sed enim varius nulla mattis varius et lacinia libero. Vivamus at porta lorem. Nunc ac elit lorem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer condimentum leo elit, a feugiat felis sodales et. Nullam mollis nisi sit amet quam venenatis finibus."
+    },
+    {
+      "id": 1561525527445,
+      "status": "close",
+      "dateCreated": "2019-06-26T05:05:27.444Z",
+      "severity": "medium",
+      "shortDescription": "Low SEO Score",
+      "resolutionDate": "2019-06-26T05:05:27.444Z",
+      "details": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar neque laoreet suspendisse interdum. Sit amet nisl suscipit adipiscing bibendum. Erat velit scelerisque in dictum non consectetur. Quis commodo odio aenean sed adipiscing diam donec adipiscing tristique. Lacus luctus accumsan tortor posuere ac ut consequat semper. Tellus in hac habitasse platea dictumst vestibulum. Velit scelerisque in dictum non. Enim sit amet venenatis urna. Eu feugiat pretium nibh ipsum consequat nisl vel. Pretium quam vulputate dignissim suspendisse in est ante in nibh. Amet consectetur adipiscing elit duis tristique sollicitudin. Tincidunt vitae semper quis lectus nulla at volutpat diam. Nunc congue nisi vitae suscipit tellus mauris a diam. Aenean euismod elementum nisi quis eleifend."
     }
   ]
 }

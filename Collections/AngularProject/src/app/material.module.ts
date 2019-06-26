@@ -8,7 +8,8 @@ import {
   MatInputModule,
   MatSelectModule,
   MatDatepickerModule,
-  MatNativeDateModule
+  MatNativeDateModule,
+  MatButtonToggleModule
 } from "@angular/material";
 import { MatToolbarModule } from "@angular/material/toolbar";
 
@@ -35,7 +36,8 @@ import { MatToolbarModule } from "@angular/material/toolbar";
     MatInputModule,
     MatSelectModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatButtonToggleModule
   ]
 })
 export class MaterialModule {}
