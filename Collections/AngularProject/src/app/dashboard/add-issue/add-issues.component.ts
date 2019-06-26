@@ -25,12 +25,11 @@ export class AddIssueComponent {
   ) {}
 
   addNewIssue(value) {
-    this.issueService
-      .addIssue(value)
-      .subscribe(
-        data =>
-          this.dialogRef.close(`Successfully submitted your issue ${data.id}`),
-        error => console.log(error)
-      );
+    this.issueService.addIssue(value).subscribe(
+      data => {
+        this.dialogRef.close(`Submitted your issue ${data.id}`);
+      },
+      error => console.log(error)
+    );
   }
 }

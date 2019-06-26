@@ -9,7 +9,9 @@ import {
   MatSelectModule,
   MatDatepickerModule,
   MatNativeDateModule,
-  MatButtonToggleModule
+  MatButtonToggleModule,
+  MatProgressSpinnerModule,
+  MatSnackBarModule
 } from "@angular/material";
 import { MatToolbarModule } from "@angular/material/toolbar";
 
@@ -24,7 +26,9 @@ import { MatToolbarModule } from "@angular/material/toolbar";
     MatInputModule,
     MatSelectModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatProgressSpinnerModule,
+    MatSnackBarModule
   ],
   exports: [
     MatButtonModule,
@@ -37,7 +41,9 @@ import { MatToolbarModule } from "@angular/material/toolbar";
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatProgressSpinnerModule,
+    MatSnackBarModule
   ]
 })
 export class MaterialModule {}

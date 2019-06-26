@@ -32,10 +32,11 @@
 mat-expansion-panel-header {
   margin-bottom: 5px;
   margin-top: 5px;
+  font-size: 18px;
 }
 
 .panelDescription {
-  padding-left: 100px;
+  padding-left: 110px;
 }
 
 .row {

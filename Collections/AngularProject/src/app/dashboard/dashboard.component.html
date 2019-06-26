@@ -89,8 +89,26 @@
       </mat-expansion-panel>
     </mat-accordion>
 
+    <div style="margin: 10px auto" *ngIf="issues.length === 0 && !isLoading">
+      No Issues found. Click
+      <!-- Add New Issue -->
+      <button mat-button color="primary" (click)="addIssue()">
+        New
+        <mat-icon>add</mat-icon>
+      </button>
+      to create an issue.
+    </div>
+
+    <mat-spinner
+      *ngIf="isLoading"
+      style="margin: auto"
+      diameter="50"
+      color="accent"
+    >
+    </mat-spinner>
+
     <!-- List of Issue -->
-    <mat-accordion>
+    <mat-accordion *ngIf="issues.length !== 0 && !isLoading">
       <mat-expansion-panel *ngFor="let issue of issues" hideToggle>
         <!-- Issue Header -->
         <mat-expansion-panel-header
@@ -175,6 +193,7 @@
             (click)="updateIssue($event)"
           >
             UPDATE
+            <mat-icon>create</mat-icon>
           </button>
 
           <!-- Flex Divider -->
@@ -183,6 +202,7 @@
           <!-- Delete Issue -->
           <button mat-stroked-button color="warn" (click)="deleteIssue($event)">
             DELETE
+            <mat-icon>delete_sweep</mat-icon>
           </button>
         </mat-action-row>
       </mat-expansion-panel>

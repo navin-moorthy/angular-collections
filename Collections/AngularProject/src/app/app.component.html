@@ -6,7 +6,8 @@
     >
   </button>
   <button mat-button>
-    <span class="mat-title"><a routerLink="/dashboard"> Dashboard</a></span>
+    <span class="mat-title"><a routerLink="/dashboard"> Dashboard </a></span>
+    <mat-icon>dashboard</mat-icon>
   </button>
 </mat-toolbar>
 
@@ -15,10 +16,15 @@
 
 <!-- Welcome Display -->
 <div *ngIf="showWelcome" class="container">
-  <h1>Welcome to simple Issue Tracker starter</h1>
-  <h2>Want to manage your issues effectively?</h2>
+  <h1>Welcome to Simple Issue Tracker Angular Starter Application</h1>
+  <h2>Want to how issues are managed?</h2>
   <button mat-raised-button color="accent">
     <a routerLink="/dashboard"> Go to Issues Dashboard</a>
   </button>
-  <small>Powered by Angular Material</small>
+  <small
+    >Powered by
+    <a href="https://material.angular.io/" style="color: blue">
+      Angular Material</a
+    ></small
+  >
 </div>

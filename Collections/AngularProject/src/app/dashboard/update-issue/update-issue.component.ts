@@ -21,12 +21,11 @@ export class UpdateIssueComponent implements OnInit {
   }
 
   updateIssue(value) {
-    this.issueService
-      .updateIssue(value)
-      .subscribe(
-        data =>
-          this.dialogRef.close(`Successfully updated your issue ${data.id}`),
-        error => console.log(error)
-      );
+    this.issueService.updateIssue(value).subscribe(
+      data => {
+        this.dialogRef.close(`Updated your issue ${data.id}`);
+      },
+      error => console.log(error)
+    );
   }
 }

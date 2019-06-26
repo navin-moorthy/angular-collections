@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { IssueService } from "../issue.service";
-import { MatDialog } from "@angular/material";
+import { MatDialog, MatSnackBar } from "@angular/material";
 
 import { AddIssueComponent } from "./add-issue/add-issues.component";
 import { UpdateIssueComponent } from "./update-issue/update-issue.component";
@@ -11,7 +11,11 @@ import { UpdateIssueComponent } from "./update-issue/update-issue.component";
   styleUrls: ["./dashboard.component.css"]
 })
 export class DashboardComponent implements OnInit {
-  constructor(private issueService: IssueService, private dialog: MatDialog) {}
+  constructor(
+    private issueService: IssueService,
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar
+  ) {}
 
   issues: any = [];
   defaultStatusFilter = "all";
@@ -24,11 +28,13 @@ export class DashboardComponent implements OnInit {
     "showStatus",
     "showShortDescription"
   ];
+  isLoading = false;
 
   ngOnInit() {
     /**
      * Get the Issues on component Initialization
      */
+    this.isLoading = true;
     this.issueService.getIssues().subscribe(
       issues => {
         issues.forEach(issue => {
@@ -37,6 +43,7 @@ export class DashboardComponent implements OnInit {
       },
       err => console.log(err)
     );
+    this.isLoading = false;
   }
 
   /**
@@ -54,18 +61,26 @@ export class DashboardComponent implements OnInit {
     /**
      * Open AddIssue Dialog and refresh the issues on submission
      */
-    addIssueDialog.afterClosed().subscribe(result => {
-      console.log(result || "Closed without submitting the issue");
-      if (result) {
+    addIssueDialog.afterClosed().subscribe(message => {
+      if (message) {
+        this.snackBar.open(message, "", {
+          duration: 2000
+        });
         this.issues = [];
+        this.isLoading = true;
         this.issueService.getIssues().subscribe(
           issues => {
             issues.forEach(issue => {
               this.issues.push(issue);
             });
+            this.isLoading = false;
           },
           err => console.log(err)
         );
+      } else {
+        this.snackBar.open(`Closed without adding an Issue`, "", {
+          duration: 2000
+        });
       }
     });
   }
@@ -100,17 +115,27 @@ export class DashboardComponent implements OnInit {
           width: "100vh"
         });
 
-        updateIssueDialog.afterClosed().subscribe(result => {
-          console.log(result || "Closed without submitting the issue");
-          this.issues = [];
-          this.issueService.getIssues().subscribe(
-            issues => {
-              issues.forEach(iss => {
-                this.issues.push(iss);
-              });
-            },
-            err => console.log(err)
-          );
+        updateIssueDialog.afterClosed().subscribe(message => {
+          if (message) {
+            this.snackBar.open(message, "", {
+              duration: 2000
+            });
+            this.issues = [];
+            this.isLoading = true;
+            this.issueService.getIssues().subscribe(
+              issues => {
+                issues.forEach(iss => {
+                  this.issues.push(iss);
+                });
+                this.isLoading = false;
+              },
+              err => console.log(err)
+            );
+          } else {
+            this.snackBar.open(`Closed without updating the Issue`, "", {
+              duration: 2000
+            });
+          }
         });
       }
     });
@@ -141,12 +166,17 @@ export class DashboardComponent implements OnInit {
      */
     this.issueService.deleteIssue(issueIdToBeDeleted).subscribe(
       data => {
+        this.snackBar.open(`Issue ${issueIdToBeDeleted} Deleted`, "", {
+          duration: 2000
+        });
         this.issues = [];
+        this.isLoading = true;
         this.issueService.getIssues().subscribe(
           issues => {
             issues.forEach(issue => {
               this.issues.push(issue);
             });
+            this.isLoading = false;
           },
           err => console.log(err)
         );
